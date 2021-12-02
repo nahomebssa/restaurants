@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class RestaurantDetailView {
     
     public String DisplayRestaurantDetails() {
-        return "restaurant";
+        return "RestaurantDetailView";
     }
 
 }

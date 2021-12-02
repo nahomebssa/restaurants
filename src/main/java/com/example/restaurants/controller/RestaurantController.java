@@ -1,6 +1,8 @@
 package com.example.restaurants.controller;
 
+import com.example.restaurants.model.Location;
 import com.example.restaurants.model.Restaurant;
+import com.example.restaurants.model.Tier;
 import com.example.restaurants.view.RestaurantDetailView;
 import com.example.restaurants.view.RestaurantsMasterView;
 
@@ -22,17 +24,17 @@ public class RestaurantController {
     private RestaurantDetailView restaurantDetailView;
 
 
-    @GetMapping("/")
-    public RedirectView getIndex() {
-        return new RedirectView("/restaurants");
-    }
+    // @GetMapping("/")
+    // public RedirectView getIndex() {
+    //     return new RedirectView("/restaurants");
+    // }
 
     @GetMapping("/r/{id}")
     public String getRestaurant(@PathVariable int id, Model model) {
         var rt = new RestTemplate();
         var response = rt.getForObject("http://localhost:8080/restaurants/"+id, Restaurant.class);
         model.addAttribute("name", "Restaurants");
-        model.addAttribute("baseUrl", "http://localhost:8082");
+        model.addAttribute("reviewsUrl", "http://localhost:8082");
         model.addAttribute("restaurant", response);
         return restaurantDetailView.DisplayRestaurantDetails();
     }

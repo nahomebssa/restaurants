@@ -16,7 +16,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Data
-@Document
+@Document(collection = "Restaurant")
 public class Restaurant {
 
     @Transient
@@ -25,10 +25,10 @@ public class Restaurant {
     @Id
     private long id;
     private String name;
-    // private Address location;
-    // private String cuisine;
-    // private int tier;
-    // private double rating;
+    private Location location;
+    private String cuisine;
+    private Tier tier;
+    private double rating;
 
 
     public static List<Restaurant> GetRestaurants() {
